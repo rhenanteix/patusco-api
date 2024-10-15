@@ -1,7 +1,11 @@
-import { createApp } from 'vue';
-import Vuetify from 'vuetify';
-import 'vuetify/dist/vuetify.min.css';
+import { createApp, h } from 'vue';
+import { createInertiaApp } from '@inertiajs/vue3';
 
-const app = createApp(App);
-app.use(Vuetify);
-app.mount('#app');
+createInertiaApp({
+  resolve: name => require(`./Pages/${name}.vue`),
+  setup({ el, App, props, plugin }) {
+    createApp({ render: () => h(App, props) })
+      .use(plugin)
+      .mount(el);
+  },
+});

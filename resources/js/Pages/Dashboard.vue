@@ -1,5 +1,11 @@
 <template>
   <div>
-    <h1>Bem-vindo ao Patusco!</h1>
+    <h1>Welcome to the Dashboard</h1>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Dashboard',
+};
+</script>
