@@ -3,5 +3,15 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Dashboard');
 });
+
+Route::resource('appointments', AppointmentController::class);
+Route::post('appointments/{id}/assign-doctor', [AppointmentController::class, 'assignDoctor']);
+Route::get('appointments/create', function () {
+    return Inertia::render('Appointments/Create');
+});
+
+Route::post('appointments', [AppointmentController::class, 'store']);
+
+
